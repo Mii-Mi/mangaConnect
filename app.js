@@ -41,8 +41,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash());
 app.use(routes);
-
 app.use(express.static('public'));
+
 
 
 // ########################
