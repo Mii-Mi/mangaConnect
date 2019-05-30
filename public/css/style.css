@@ -77,7 +77,9 @@ body{
   background-size: cover;
 }
 .article{
-  background-color: rgba(216, 200, 191, 0.8)
+  background-color: rgba(216, 200, 191, 0.8);
+  border: 1px solid rgb(216, 126, 126);
+  margin: 0 auto;
 }
 .article img{
   max-width: 100%;

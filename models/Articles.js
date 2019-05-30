@@ -1,6 +1,5 @@
 const mongoose = require('mongoose'),
-      dateFormat = require('dateformat'),
-      now = new Date()
+      dateFormat = require('dateformat')
 
 const ArticleSchema = new mongoose.Schema({
     title: {
@@ -19,7 +18,7 @@ const ArticleSchema = new mongoose.Schema({
     },
     formatDate: {
         type: String,
-        default: (dateFormat(now, "dd mm yyyy à HH:MM:ss"))
+        default: (dateFormat(new Date(), "dd mm yyyy à HH:MM:ss"))
     }
 })
 
