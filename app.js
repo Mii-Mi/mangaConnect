@@ -20,7 +20,7 @@ const mongoStore = MongoStore(expressSession);
 mongoose.set('useNewUrlParser', true)
 mongoose.set('useFindAndModify', false)
 mongoose.set('useCreateIndex', true)
-mongoose.connect('mongodb://localhost:27017/revolution');
+mongoose.connect('mongodb://localhost:27017/manga');
 
 app.use(expressSession({
     secret: 'securite',
