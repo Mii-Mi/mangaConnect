@@ -79,3 +79,8 @@ body{
 .article{
   background-color: rgba(216, 200, 191, 0.8)
 }
+.article img{
+  max-width: 100%;
+  max-height: 450px;
+  object-fit: contain;
+}
