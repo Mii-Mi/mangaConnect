@@ -14,7 +14,7 @@
         <div class="col-md-12 article">
           <h2>{{article.title}}</h2>
           {{{article.content}}}
-          <p>publié par <a href="">{{article.author}}</a>, le {{article.formatDate}}</p>
+          <p>publié par <a href="/users/profile/{{article.authorId}}">{{article.author}}</a>, le {{article.formatDate}}</p>
           {{#if isOwner}}
           <p><a class="btn btn-secondary" href="/articles/edit/{{article._id}}" role="button">Modifier &raquo;</a> <a class="btn btn-secondary" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a></p>
           {{/if}}

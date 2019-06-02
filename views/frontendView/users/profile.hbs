@@ -1,0 +1,40 @@
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Manga Connect</h1>
+      <h2>Page personnelle de {{usr.userName}}</h2>
+      <p>Toutes les annonces de {{usr.userName}} sont ici !</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      {{#if article}}
+        {{#each article}}
+        <div class="col-md-4 article">
+          <h2>{{title}}</h2>
+          {{{content}}}
+          <p>publié par <a href="">{{author}}</a>, le {{formatDate}}</p>
+          <p>
+            <a class="btn btn-secondary" href="/articles/single/{{_id}}" role="button">Détails &raquo;</a>
+            {{#if ../isOwner}}
+            <a class="btn btn-secondary" href="/articles/edit/{{_id}}" role="button">Modifier &raquo;</a>
+            <a class="btn btn-secondary" href="/articles/delete/{{_id}}" role="button">Supprimer &raquo;</a>
+            {{/if}}
+          </p>
+        </div>
+        {{/each}}
+      {{else}}
+      <div class="col-md-12 article">
+        <p>{{usr.userName}} n'a pas encore publié d'article !</p>
+      </div>
+      {{/if}}
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+</main>
