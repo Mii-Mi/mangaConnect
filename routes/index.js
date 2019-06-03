@@ -31,7 +31,10 @@ const welcome = require('../controllers/frontend/welcome'),
       articleSingle = require('../controllers/frontend/articleSingle'),
       articleEdit = require('../controllers/frontend/articleEdit'),
       articleUpdate = require('../controllers/frontend/articleUpdate'),
-      articleDelete = require('../controllers/frontend/articleDelete')
+      articleDelete = require('../controllers/frontend/articleDelete'),
+
+    // Comments
+      commentsCreate = require('../controllers/frontend/commentCreate')
 
 // ########################
 //         Routes       
@@ -53,5 +56,8 @@ router.get('/articles/single/:articleId', articleSingle)
 router.get('/articles/edit/:articleId', auth, articleEdit)
 router.post('/articles/update/:articleId', auth, articleUpdate)
 router.get('/articles/delete/:articleId', auth, articleDelete)
+
+    // Comments
+router.post('/comments/create/:articleId', auth, commentsCreate)
 
 module.exports = router;

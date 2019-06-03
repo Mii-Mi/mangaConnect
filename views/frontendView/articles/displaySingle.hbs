@@ -20,6 +20,45 @@
           {{/if}}
         </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <section>
+          {{#if comment}}
+            {{#each comment}}
+            <article class="comment" id="{{_id}}">
+              <p>Publié par <a href="/users/profile/{{authorId}}">{{author}}</a>, le {{formatDate}}</p>
+              {{{content}}}
+              {{#if isCommentOwner}}
+              <div class="adminButtonsCont">
+                <a class="btn btn-secondary" href="/comment/edit/{{_id}}">Modifier</a>
+                <a class="btn btn-secondary" href="/comment/delete/{{_id}}">Supprimer</a>
+              </div>
+              {{/if}}
+            </article>
+            {{/each}}
+          {{else}}
+          <p class="comment">Aucun commentaire pour le moment ... Soyez le premier !</p>
+          {{/if}}
+        </section>
+        {{#if user}}
+        <form method="POST" action="/comments/create/{{article._id}}">
+          <div class="form-group">
+            <label for="content">Votre commentaire :</label>
+            <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+            <script>
+              CKEDITOR.replace(
+                ('content'));
+              CKEDITOR.config.entities = false;
+              CKEDITOR.config.entities_latin = false;
+            </script>
+          </div>
+          <button type="submit" class="btn btn-secondary">Publier</button>
+        </form>
+        {{else}}
+        <p><strong>Connectez vous pour commenter !</strong></p>
+        {{/if}}
+      </div>
+    </div>
 
     <hr>
 
