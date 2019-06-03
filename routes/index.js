@@ -64,6 +64,6 @@ router.get('/articles/delete/:articleId', auth, articleDelete)
 router.post('/comments/create/:articleId', auth, commentsCreate)
 router.get('/comments/edit/:commentId', auth, commentEdit)
 router.post('/comments/update/:commentId', auth, commentUpdate)
-router.get('/comments/delete/:articleId/:commentId', auth, commentDelete)
+router.get('/comments/delete/:articleId', auth, commentDelete)
 
 module.exports = router;
