@@ -6,6 +6,15 @@ module.exports = async(req, res) => {
         if (error) {
             console.log(error);
         }
-        res.render('index', {article})
+
+        if (req.flash('data')[0] == 'admin') {
+            const admin = true
+            res.render('index', { admin, article });
+        } else if (req.flash('data')[0] == 'member') {
+            const member = true
+            res.render('index', { member, article });
+        } else {
+            res.render('index', {article});
+        }
     }) 
 }

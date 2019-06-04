@@ -8,9 +8,11 @@ const express = require('express'),
 
     // Users
 const auth = require('../middlewares/auth'),
-      uName = require('../middlewares/usrLocalsName')
+      uName = require('../middlewares/usrLocalsName'),
+      testUserGroup = require('../middlewares/testUserGroup')
 
 router.use(uName)
+router.use(testUserGroup)
 
 // ########################
 //       Controllers    

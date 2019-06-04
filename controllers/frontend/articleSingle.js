@@ -32,7 +32,15 @@ module.exports = async (req, res) => {
                     }
                 }
             }
-            res.render('frontendView/articles/displaySingle', {article, comment, isOwner})
+            if (req.flash('data')[0] == 'admin') {
+                const admin = true
+                res.render('frontendView/articles/displaySingle', { article, comment, isOwner, admin });
+            } else if (req.flash('data')[0] == 'member') {
+                const member = true
+                res.render('frontendView/articles/displaySingle', { article, comment, isOwner, member });
+            } else {
+                res.render('frontendView/articles/displaySingle', { article, comment, isOwner });
+            }
         })
     });
 }

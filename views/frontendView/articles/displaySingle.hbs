@@ -17,6 +17,9 @@
           <p>publié par <a href="/users/profile/{{article.authorId}}">{{article.author}}</a>, le {{article.formatDate}}</p>
           {{#if isOwner}}
           <p><a class="btn btn-secondary" href="/articles/edit/{{article._id}}" role="button">Modifier &raquo;</a> <a class="btn btn-secondary" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a></p>
+          {{else}}{{#if admin}}
+          <p><a class="btn btn-secondary" href="/articles/edit/{{article._id}}" role="button">Modifier &raquo;</a> <a class="btn btn-secondary" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a></p>
+          {{/if}}
           {{/if}}
         </div>
     </div>

@@ -26,6 +26,10 @@ const UserSchema = new mongoose.Schema({
     },
     registerDate: {
         type: String,
+    },
+    userGroup: {
+        type: Number,
+        default: 1
     }
 })
 
