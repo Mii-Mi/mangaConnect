@@ -1,7 +1,9 @@
 const Comments = require('../../models/Comments'),
-      Users = require('../../models/Users')
-
+      Users = require('../../models/Users'),
+      dateFormat = require('dateformat')
+  
 module.exports = (req, res) => {
+    let time = Date.now()
 
     Users.findById(req.session.userId, (error, user) => {
         // console.log(req.flash('data')[0]);
@@ -14,7 +16,8 @@ module.exports = (req, res) => {
                 ...req.body,
                 author: user.userName,
                 authorId: user._id,
-                articleId: req.params.articleId
+                articleId: req.params.articleId,
+                formatDate: (dateFormat(time, "dd mm yyyy à HH:MM:ss"))
             },
             (error, comment) => {
                 if (error) {

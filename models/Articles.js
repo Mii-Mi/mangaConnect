@@ -1,7 +1,4 @@
-const mongoose = require('mongoose'),
-      dateFormat = require('dateformat')
-
-let date = new Date()
+const mongoose = require('mongoose')
 
 const ArticleSchema = new mongoose.Schema({
     title: {
@@ -16,11 +13,10 @@ const ArticleSchema = new mongoose.Schema({
     authorId: String,
     createDate: {
         type: Date,
-        default: new Date()
+        default: Date.now()
     },
     formatDate: {
         type: String,
-        default: (dateFormat(date, "dd mm yyyy à HH:MM:ss"))
     }
 })
 

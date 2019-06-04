@@ -1,7 +1,10 @@
 const Article = require('../../models/Articles'),
-      User = require('../../models/Users')
+      User = require('../../models/Users'),
+      dateFormat = require('dateformat')
 
+      
 module.exports = (req, res) => {
+    let date = Date.now()
 
     User.findById(req.session.userId, (error, user) => {
         // console.log(req.flash('data')[0]);
@@ -13,7 +16,8 @@ module.exports = (req, res) => {
             {
                 ...req.body,
                 author: user.userName,
-                authorId: user._id
+                authorId: user._id,
+                formatDate: (dateFormat(date, "dd mm yyyy à HH:MM:ss"))
             },
             (error, article) => {
                 if (error) {

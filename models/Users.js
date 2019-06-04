@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'),
-      bcrypt = require('bcrypt');
-
+      bcrypt = require('bcrypt')
+      
 const UserSchema = new mongoose.Schema({
     userName: {
         type: String,
@@ -15,6 +15,17 @@ const UserSchema = new mongoose.Schema({
     pass: {
         type: String,
         required: [true, 'Le champ "Mot de passe" est requis.']
+    },
+    age: {
+        type: Number,
+        required: [true, 'Le champ "age" est requis. ']
+    },
+    locate: {
+        type: String,
+        required: [true, 'Le champ "nationalité" est requis.']
+    },
+    registerDate: {
+        type: String,
     }
 })
 
