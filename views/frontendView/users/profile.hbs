@@ -12,6 +12,17 @@
   <div class="container">
     <!-- Example row of columns -->
     <div class="row">
+      <div class="profile col-md-12">
+        <div class="profileHead">
+          <img src="/images/logos/user_circle.png" alt="logo" />
+          <h3>{{usr.userName}}</h3>
+        </div>
+        <div class="userDataBlock">
+         <p>Age : {{usr.age}} ans</p>
+         <p>Nationalité : {{usr.locate}}</p>
+        </div>
+        <p class="registerDate">Date d'inscription : {{usr.registerDate}}</p>
+      </div>
       {{#if article}}
         {{#each article}}
         <div class="col-md-4 article">

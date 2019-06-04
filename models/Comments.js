@@ -1,5 +1,4 @@
-const mongoose = require('mongoose'),
-      dateFormat = require('dateformat')
+const mongoose = require('mongoose')
 
 const CommentSchema = new mongoose.Schema({
     content: {
@@ -15,7 +14,6 @@ const CommentSchema = new mongoose.Schema({
     },
     formatDate: {
         type: String,
-        default: (dateFormat(new Date(), "dd mm yyyy à HH:MM:ss"))
     }
 })
 

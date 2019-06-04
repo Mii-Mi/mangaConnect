@@ -1,9 +1,16 @@
-const User = require('../../models/Users')
-
+const User = require('../../models/Users'),
+      dateFormat = require('dateformat')
+      
 module.exports = (req, res) => {
+    let date = Date.now()
+    
     if(req.body.pass === req.body.pass2){
         User.create(
-            req.body, (error, usr) => {
+            {
+                ... req.body,
+                registerDate: (dateFormat(date, "dd mm yyyy à HH:MM:ss"))
+            },
+            (error, usr) => {
 
                 if (error) {
 
