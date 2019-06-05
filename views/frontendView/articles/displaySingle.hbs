@@ -14,7 +14,7 @@
         <div class="col-md-12 article">
           <h2>{{article.title}}</h2>
           {{{article.content}}}
-          <p>publié par <a href="/users/profile/{{article.authorId}}">{{article.author}}</a>, le {{article.formatDate}}</p>
+          <p class="artFoot">publié par <a href="/users/profile/{{article.authorId}}">{{article.author}}</a>, le {{article.formatDate}}</p>
           {{#if isOwner}}
           <p>
             <a class="btn btn-secondary" href="/articles/edit/{{article._id}}" role="button">Modifier &raquo;</a>
@@ -35,7 +35,7 @@
           {{#if comment}}
             {{#each comment}}
             <article class="comment" id="{{_id}}">
-              <p>Publié par <a href="/users/profile/{{authorId}}">{{author}}</a>, le {{formatDate}}</p>
+              <p class="comHead">Publié par <a href="/users/profile/{{authorId}}">{{author}}</a>, le {{formatDate}}</p>
               {{{content}}}
               {{#if isCommentOwner}}
               <div class="adminButtonsCont">

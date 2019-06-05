@@ -48,7 +48,12 @@ const welcome = require('../controllers/frontend/welcome'),
       adminAdd = require('../controllers/backend/adminAdd'),
       adminDelete = require('../controllers/backend/adminDelete'),
       memberBan = require('../controllers/backend/memberBan'),
-      memberUnban = require('../controllers/backend/memberUnban')
+      memberUnban = require('../controllers/backend/memberUnban'),
+
+    // MP
+      mpAdd = require('../controllers/frontend/mpAdd'),
+      mpCreate = require('../controllers/frontend/mpCreate'),
+      mpDisplay = require('../controllers/frontend/mpdisplay')
 
 // ########################
 //         Routes       
@@ -82,5 +87,10 @@ router.get('/admins/add/:userId',adminAuth, adminAdd)
 router.get('/admins/delete/:userId', adminAuth, adminDelete)
 router.get('/members/ban/:userId', adminAuth, memberBan)
 router.get('/members/unban/:userId', adminAuth, memberUnban)
+
+    // MP
+router.get('/mp/add/:destId', mpAdd)
+router.post('/mp/create/:destId', mpCreate)
+router.get('/mp/display/:senderId/:destId', auth, mpDisplay)
 
 module.exports = router;

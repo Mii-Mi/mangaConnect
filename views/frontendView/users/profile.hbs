@@ -21,23 +21,25 @@
          <p>Age : {{usr.age}} ans</p>
          <p>Nationalité : {{usr.locate}}</p>
         </div>
-        <p class="registerDate">Date d'inscription : {{usr.registerDate}}</p>
-        {{#if isOwner}}{{else}}
+        <p class="registerDate">Date d'inscription : {{usr.registerDate}} <br />Statut : {{#if userIsAdmin}}Admin{{else}}{{#if userIsBanned}}Banni{{else}}Membre{{/if}}{{/if}}</p>
+
           <div class="adminButtons">
-          {{#if admin}}
-            {{#if userIsBanned}}
-            <p><a class="btn btn-secondary adminDelBtn" href="/members/unban/{{usr._id}}">Amnistier &raquo;</a></p>
-            {{else}}
-            <p><a class="btn btn-secondary adminDelBtn" href="/members/ban/{{usr._id}}">Bannir &raquo;</a></p>
-              {{#if userIsAdmin}}
-              <p><a class="btn btn-secondary adminDelBtn" href="/admins/delete/{{usr._id}}">Révoquer des admins &raquo;</a></p>
-              {{else}}
-              <p><a class="btn btn-secondary adminEditBtn" href="/admins/add/{{usr._id}}">Définir en tant qu'admin &raquo;</a></p>
+            <a class="btn btn-secondary mpButton" href="/mp/add/{{usr._id}}" role="button">Message Privé &raquo;</a>
+            {{#if isOwner}}{{else}}
+              {{#if admin}}
+                {{#if userIsBanned}}
+                <p><a class="btn btn-secondary adminDelBtn" href="/members/unban/{{usr._id}}">Amnistier &raquo;</a></p>
+                {{else}}
+                <p><a class="btn btn-secondary adminDelBtn" href="/members/ban/{{usr._id}}">Bannir &raquo;</a></p>
+                  {{#if userIsAdmin}}
+                  <p><a class="btn btn-secondary adminDelBtn" href="/admins/delete/{{usr._id}}">Révoquer des admins &raquo;</a></p>
+                  {{else}}
+                  <p><a class="btn btn-secondary adminEditBtn" href="/admins/add/{{usr._id}}">Définir en tant qu'admin &raquo;</a></p>
+                  {{/if}}
+                {{/if}}
               {{/if}}
             {{/if}}
-          {{/if}}
-        {{/if}}
-        </div>
+          </div>
       </div>
       {{#if article}}
         {{#each article}}

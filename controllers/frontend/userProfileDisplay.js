@@ -28,9 +28,9 @@ module.exports = (req, res) => {
                 res.render('frontendView/users/profile', { usr, admin, isOwner, userIsAdmin, userIsBanned, article });
             } else if (req.flash('data')[0] == 'member') {
                 const member = true
-                res.render('frontendView/users/profile', { usr, member, isOwner, article });
+                res.render('frontendView/users/profile', { usr, member, isOwner, userIsAdmin, userIsBanned, article });
             } else {
-                res.render('frontendView/users/profile', { usr, isOwner, article });
+                res.render('frontendView/users/profile', { usr, isOwner, userIsAdmin, userIsBanned, article });
             }
         })
     })
