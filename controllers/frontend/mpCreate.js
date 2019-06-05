@@ -18,6 +18,7 @@ module.exports = (req, res) => {
                 author: user.userName,
                 authorId: user._id,
                 destId: req.params.destId,
+                dest: req.params.dest,
                 formatDate: (dateFormat(date, "dd mm yyyy à HH:MM:ss"))
             },
             (error, mp) => {
@@ -27,7 +28,7 @@ module.exports = (req, res) => {
                 } else {
                     req.flash('success', 'Conversation créée avec succes !');
                 }
-                res.redirect(`/`)
+                res.redirect(`/mp/display/${mp._id}`)
             })
 
     })

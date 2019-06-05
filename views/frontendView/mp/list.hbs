@@ -1,0 +1,38 @@
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Manga Connect</h1>
+            <p>Vendez ou échangez vos mangas à travers toute la France d'un simple clic.</p>
+            <h2>Ma boite de messagerie privée</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 article">
+            {{#if mp}}
+                {{#each mp}}
+                <article class="mpListItem">
+                    <h2><a href="/mp/display/{{_id}}">{{title}}</a></h2>
+                    <p class="artFoot">publié par <a href="/users/profile/{{authorId}}">{{author}}</a> pour <a href="/users/profile/{{destId}}">{{dest}}</a> , le {{formatDate}}</p>
+                    {{#if isOwner}}
+                    <p>
+                        <a class="btn btn-secondary" href="/articles/edit/{{article._id}}" role="button">Modifier &raquo;</a>
+                        <a class="btn btn-secondary" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a>
+                    </p>
+                    {{else}}{{#if admin}}
+                    <p>
+                        <a class="btn btn-secondary adminEditBtn" href="/articles/edit/{{article._id}}" role="button">Modérer &raquo;</a>
+                        <a class="btn btn-secondary adminDelBtn" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a>
+                    </p>
+                    {{/if}}
+                    {{/if}}
+                </article>
+                {{/each}}
+            {{else}}
+                <p>Pas de messages pour l'instant !</p>
+            {{/if}}
+            </div>
+        </div>

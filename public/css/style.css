@@ -139,6 +139,14 @@ body{
   margin-bottom: 15px;
 }
 
+/***** MP *****/
+.mpListItem{
+  border: 1px solid rgb(216, 126, 126);
+  margin: 10px 0;
+  padding: 0 10px;
+  background-color: rgba(168, 153, 145, 0.8);
+}
+
 /***** ADMIN *****/
 .adminEditBtn{
   color: rgb(17, 75, 17);

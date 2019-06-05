@@ -10,6 +10,25 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-md-12 article">
+            <h2>{{mp.title}}</h2>
+            {{{mp.content}}}
+            <p class="artFoot">publié par <a href="/users/profile/{{mp.authorId}}">{{mp.author}}</a> pour <a href="/users/profile/{{mp.destId}}">{{mp.dest}}</a>, le {{mp.formatDate}}</p>
+            {{#if isOwner}}
+            <p>
+                <a class="btn btn-secondary" href="/articles/edit/{{article._id}}" role="button">Modifier &raquo;</a>
+                <a class="btn btn-secondary" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a>
+            </p>
+            {{else}}{{#if admin}}
+            <p>
+                <a class="btn btn-secondary adminEditBtn" href="/articles/edit/{{article._id}}" role="button">Modérer &raquo;</a>
+                <a class="btn btn-secondary adminDelBtn" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a>
+            </p>
+            {{/if}}
+            {{/if}}
+            </div>
+        </div>
+        {{!-- <div class="row">
             <div class="col-md-12">
                 <section>
                     {{#if mp}}
@@ -54,7 +73,7 @@
                 <p><strong>Connectez vous pour écrire un message à {{mp.destName}} !</strong></p>
                 {{/if}}
             </div>
-        </div>
+        </div> --}}
 
         <hr>
 

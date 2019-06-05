@@ -53,7 +53,8 @@ const welcome = require('../controllers/frontend/welcome'),
     // MP
       mpAdd = require('../controllers/frontend/mpAdd'),
       mpCreate = require('../controllers/frontend/mpCreate'),
-      mpDisplay = require('../controllers/frontend/mpdisplay')
+      mpDisplay = require('../controllers/frontend/mpdisplay'),
+      mpList = require('../controllers/frontend/mpList')
 
 // ########################
 //         Routes       
@@ -90,7 +91,8 @@ router.get('/members/unban/:userId', adminAuth, memberUnban)
 
     // MP
 router.get('/mp/add/:destId', mpAdd)
-router.post('/mp/create/:destId', mpCreate)
-router.get('/mp/display/:senderId/:destId', auth, mpDisplay)
+router.post('/mp/create/:destId/:dest', mpCreate)
+router.get('/mp/display/:id', auth, mpDisplay)
+router.get('/mp/list/:userId', auth, mpList)
 
 module.exports = router;
