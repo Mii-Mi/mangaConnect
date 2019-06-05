@@ -2,10 +2,12 @@ const User = require('../../models/Users'),
       bcrypt = require('bcrypt');
 
 module.exports = (req, res) => {
-
+    let banned = false
+    
     const { userName, pass } = req.body;
     User.findOne({ userName }, (error, user) => {
         if (user) {
+
             bcrypt.compare(pass, user.pass, (error, same) => {
                 if (same) {
                     req.session.userId = user._id

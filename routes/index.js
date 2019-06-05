@@ -14,6 +14,9 @@ const auth = require('../middlewares/auth'),
 router.use(uName)
 router.use(testUserGroup)
 
+    // Admins
+const adminAuth = require('../middlewares/adminAuth')
+
 // ########################
 //       Controllers    
 // ########################
@@ -39,7 +42,13 @@ const welcome = require('../controllers/frontend/welcome'),
       commentCreate = require('../controllers/frontend/commentCreate'),
       commentEdit = require('../controllers/frontend/commentEdit'),
       commentUpdate = require('../controllers/frontend/commentUpdate'),
-      commentDelete = require('../controllers/frontend/commentDelete')
+      commentDelete = require('../controllers/frontend/commentDelete'),
+    
+    // Admins modules
+      adminAdd = require('../controllers/backend/adminAdd'),
+      adminDelete = require('../controllers/backend/adminDelete'),
+      memberBan = require('../controllers/backend/memberBan'),
+      memberUnban = require('../controllers/backend/memberUnban')
 
 // ########################
 //         Routes       
@@ -67,5 +76,11 @@ router.post('/comments/create/:articleId', auth, commentCreate)
 router.get('/comments/edit/:commentId', auth, commentEdit)
 router.post('/comments/update/:commentId', auth, commentUpdate)
 router.get('/comments/delete/:commentId/:articleId', auth, commentDelete)
+
+    // Admins modules
+router.get('/admins/add/:userId',adminAuth, adminAdd)
+router.get('/admins/delete/:userId', adminAuth, adminDelete)
+router.get('/members/ban/:userId', adminAuth, memberBan)
+router.get('/members/unban/:userId', adminAuth, memberUnban)
 
 module.exports = router;

@@ -22,6 +22,22 @@
          <p>Nationalité : {{usr.locate}}</p>
         </div>
         <p class="registerDate">Date d'inscription : {{usr.registerDate}}</p>
+        {{#if isOwner}}{{else}}
+          <div class="adminButtons">
+          {{#if admin}}
+            {{#if userIsBanned}}
+            <p><a class="btn btn-secondary adminDelBtn" href="/members/unban/{{usr._id}}">Amnistier &raquo;</a></p>
+            {{else}}
+            <p><a class="btn btn-secondary adminDelBtn" href="/members/ban/{{usr._id}}">Bannir &raquo;</a></p>
+              {{#if userIsAdmin}}
+              <p><a class="btn btn-secondary adminDelBtn" href="/admins/delete/{{usr._id}}">Révoquer des admins &raquo;</a></p>
+              {{else}}
+              <p><a class="btn btn-secondary adminEditBtn" href="/admins/add/{{usr._id}}">Définir en tant qu'admin &raquo;</a></p>
+              {{/if}}
+            {{/if}}
+          {{/if}}
+        {{/if}}
+        </div>
       </div>
       {{#if article}}
         {{#each article}}
@@ -34,6 +50,10 @@
             {{#if ../isOwner}}
             <a class="btn btn-secondary" href="/articles/edit/{{_id}}" role="button">Modifier &raquo;</a>
             <a class="btn btn-secondary" href="/articles/delete/{{_id}}" role="button">Supprimer &raquo;</a>
+            {{else}}{{#if ../admin}}
+            <a class="btn btn-secondary adminEditBtn" href="/articles/edit/{{_id}}" role="button">Modérer &raquo;</a>
+            <a class="btn btn-secondary adminDelBtn" href="/articles/delete/{{_id}}" role="button">Supprimer &raquo;</a>
+            {{/if}}
             {{/if}}
           </p>
         </div>

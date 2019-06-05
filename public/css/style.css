@@ -125,3 +125,29 @@ body{
   /* margin: auto; */
   margin-top: 30px;
 }
+
+/***** ADMIN *****/
+.adminEditBtn{
+  color: rgb(17, 75, 17);
+}
+.adminEditBtn:hover{
+  color: rgb(157, 214, 157);
+}
+.adminDelBtn{
+  color: firebrick;
+}
+.adminDelBtn:hover{
+  color: rgb(185, 132, 132);
+}
+.adminButtons{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.adminButtons p{
+  flex: 1;
+  text-align: center;
+}
+.adminButtons p .btn{
+  width: 95%;
+}

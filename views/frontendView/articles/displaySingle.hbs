@@ -16,9 +16,15 @@
           {{{article.content}}}
           <p>publié par <a href="/users/profile/{{article.authorId}}">{{article.author}}</a>, le {{article.formatDate}}</p>
           {{#if isOwner}}
-          <p><a class="btn btn-secondary" href="/articles/edit/{{article._id}}" role="button">Modifier &raquo;</a> <a class="btn btn-secondary" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a></p>
+          <p>
+            <a class="btn btn-secondary" href="/articles/edit/{{article._id}}" role="button">Modifier &raquo;</a>
+            <a class="btn btn-secondary" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a>
+          </p>
           {{else}}{{#if admin}}
-          <p><a class="btn btn-secondary" href="/articles/edit/{{article._id}}" role="button">Modifier &raquo;</a> <a class="btn btn-secondary" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a></p>
+          <p>
+            <a class="btn btn-secondary adminEditBtn" href="/articles/edit/{{article._id}}" role="button">Modérer &raquo;</a>
+            <a class="btn btn-secondary adminDelBtn" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a>
+          </p>
           {{/if}}
           {{/if}}
         </div>
@@ -33,9 +39,15 @@
               {{{content}}}
               {{#if isCommentOwner}}
               <div class="adminButtonsCont">
-                <a class="btn btn-secondary" href="/comments/edit/{{_id}}">Modifier</a>
-                <a class="btn btn-secondary" href="/comments/delete/{{_id}}/{{../article._id}}">Supprimer</a>
+                <a class="btn btn-secondary" href="/comments/edit/{{_id}}">Modifier &raquo;</a>
+                <a class="btn btn-secondary" href="/comments/delete/{{_id}}/{{../article._id}}">Supprimer &raquo;</a>
               </div>
+              {{else}}{{#if ../admin}}
+              <div class="adminButtonsCont">
+                <a class="btn btn-secondary adminEditBtn" href="/comments/edit/{{_id}}">Modérer &raquo;</a>
+                <a class="btn btn-secondary adminDelBtn" href="/comments/delete/{{_id}}/{{../article._id}}">Supprimer &raquo;</a>
+              </div>
+              {{/if}}
               {{/if}}
             </article>
             {{/each}}
