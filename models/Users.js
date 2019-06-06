@@ -30,6 +30,10 @@ const UserSchema = new mongoose.Schema({
     userGroup: {
         type: Number,
         default: 1
+    },
+    lastVisit: {
+        type: Number,
+        default:0
     }
 })
 
