@@ -9,13 +9,10 @@ const MpRespSchema = new mongoose.Schema({
     senderName: String,
     senderId: String,
     mpId: String,
-    createDate: {
-        type: Date,
-        default: Date.now()
-    },
     formatDate: {
         type: String,
-    }
+    },
+    tStamp: Number
 })
 
 const MpResp = mongoose.model('MpResp', MpRespSchema);

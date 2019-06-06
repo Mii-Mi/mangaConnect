@@ -35,6 +35,9 @@ module.exports = (req, res) => {
                         }
                     }
                 }
+
+                req.session[`read`+ req.params.id] = Date.now()
+
                 if (isOwner || mp.destId === req.session.userId) {
                     res.render('frontendView/mp/displaySingle', {mp, isOwner, mpResp})
                 }else{

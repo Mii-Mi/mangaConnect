@@ -19,7 +19,8 @@ module.exports = (req, res) => {
                 authorId: user._id,
                 destId: req.params.destId,
                 dest: req.params.dest,
-                formatDate: (dateFormat(date, "dd mm yyyy à HH:MM:ss"))
+                formatDate: (dateFormat(date, "dd mm yyyy à HH:MM:ss")),
+                tStamp: Date.now()
             },
             (error, mp) => {
                 if (error) {

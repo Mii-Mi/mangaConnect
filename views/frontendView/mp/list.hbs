@@ -15,20 +15,8 @@
             {{#if mp}}
                 {{#each mp}}
                 <article class="mpListItem">
-                    <h2><a href="/mp/display/{{_id}}">{{title}}</a></h2>
+                    <h2><a href="/mp/display/{{_id}}" {{#if read}}class="text-secondary"{{else}}class="text-primary"{{/if}}>{{title}}</a></h2>
                     <p class="artFoot">publié par <a href="/users/profile/{{authorId}}">{{author}}</a> pour <a href="/users/profile/{{destId}}">{{dest}}</a> , le {{formatDate}}</p>
-                    {{#if isOwner}}
-                    <p>
-                        <a class="btn btn-secondary" href="/articles/edit/{{article._id}}" role="button">Modifier &raquo;</a>
-                        <a class="btn btn-secondary" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a>
-                    </p>
-                    {{else}}{{#if admin}}
-                    <p>
-                        <a class="btn btn-secondary adminEditBtn" href="/articles/edit/{{article._id}}" role="button">Modérer &raquo;</a>
-                        <a class="btn btn-secondary adminDelBtn" href="/articles/delete/{{article._id}}" role="button">Supprimer &raquo;</a>
-                    </p>
-                    {{/if}}
-                    {{/if}}
                 </article>
                 {{/each}}
             {{else}}

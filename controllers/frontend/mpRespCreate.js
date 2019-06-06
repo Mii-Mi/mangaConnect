@@ -1,4 +1,5 @@
 const MpResp = require('../../models/MpResp'),
+      Mp = require('../../models/Mp'),
       Users = require('../../models/Users'),
       dateFormat = require('dateformat')
 
@@ -17,7 +18,8 @@ module.exports = (req, res) => {
                 senderName: user.userName,
                 senderId: user._id,
                 mpId: req.params.mpId,
-                formatDate: (dateFormat(time, "dd mm yyyy à HH:MM:ss"))
+                formatDate: (dateFormat(time, "dd mm yyyy à HH:MM:ss")),
+                tStamp: Date.now()
             },
             (error, mpResp) => {
                 if (error) {
@@ -25,8 +27,14 @@ module.exports = (req, res) => {
                     req.flash('error', 'Erreur lors de la création du commentaire');
                 } else {
                     req.flash('success', 'Commentaire créé avec succes !');
+                    Mp.findByIdAndUpdate(mpResp.mpId, {tStamp: Date.now()}, (err, mp) => {
+                        if(err){
+                            console.log(err);
+                        }
+                        req.session[`read`+ mpResp.mpId] = Date.now()
+                        res.redirect(`/mp/display/${mpResp.mpId}#${mpResp._id}`)
+                    })
                 }
-                res.redirect(`/mp/display/${mpResp.mpId}#${mpResp._id}`)
             }
         )
     })

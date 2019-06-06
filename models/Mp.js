@@ -13,13 +13,10 @@ const ConversationSchema = new mongoose.Schema({
     authorId: String,
     dest: String,
     destId: String,
-    createDate: {
-        type: Date,
-        default: Date.now()
-    },
     formatDate: {
         type: String,
-    }
+    },
+    tStamp: Number,
 })
 
 const Conversation = mongoose.model('Conversation', ConversationSchema);
