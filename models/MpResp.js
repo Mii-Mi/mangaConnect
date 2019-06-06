@@ -1,17 +1,14 @@
 const mongoose = require('mongoose')
 
-const MpSchema = new mongoose.Schema({
-    title: {
-        type: String,
-    },
+const MpRespSchema = new mongoose.Schema({
+
     content: {
         type: String,
         required: [true, 'Le champ "contenu" est requis.']
     },
     senderName: String,
     senderId: String,
-    destName: String,
-    destId: String,
+    mpId: String,
     createDate: {
         type: Date,
         default: Date.now()
@@ -21,6 +18,6 @@ const MpSchema = new mongoose.Schema({
     }
 })
 
-const Mp = mongoose.model('Mp', MpSchema);
+const MpResp = mongoose.model('MpResp', MpRespSchema);
 
-module.exports = Mp;
+module.exports = MpResp;

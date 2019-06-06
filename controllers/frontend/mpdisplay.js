@@ -1,16 +1,47 @@
-const Mp = require('../../models/Mp')
+const Mp = require('../../models/Mp'),
+      MpResp = require('../../models/MpResp')
 
-module.exports = async (req, res) => {
+module.exports = (req, res) => {
 
     Mp.findById(
         req.params.id,
-        (error, mp) => {
+        async (error, mp) => {
             if (error){
                 console.log(error);
             }
-            console.log(mp);
-            
-            res.render('frontendView/users/private', {mp})
-        }) 
-    
+
+            let isOwner = false
+
+            if (mp.authorId === req.session.userId){
+                isOwner = true;
+            }
+
+            await MpResp.find({mpId: req.params.id}, (error, mpResp) => {
+                if (error) {
+                    console.log(error);
+                }
+                for (i = 0; i < mpResp.length; i++) {
+                    if (mpResp[i].senderId === req.session.userId) {
+
+                        mpResp[i] = {
+                            _id: mpResp[i]._id,
+                            content: mpResp[i].content,
+                            senderName: mpResp[i].senderName,
+                            senderId: mpResp[i].senderId,
+                            mpId: mpResp[i].mpId,
+                            createDate: mpResp[i].createDate,
+                            formatDate: mpResp[i].formatDate,
+                            isCommentOwner: true
+                        }
+                    }
+                }
+                if (isOwner || mp.destId === req.session.userId) {
+                    res.render('frontendView/mp/displaySingle', {mp, isOwner, mpResp})
+                }else{
+                    req.flash('error', 'Vous n\'êtes pas autorisé à voir cette conversation !')
+                    res.redirect('/')
+                }
+            })
+        }
+    ) 
 }

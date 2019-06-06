@@ -1,0 +1,69 @@
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Manga Connect</h1>
+            <p>Vendez ou échangez vos mangas à travers toute la France d'un simple clic.</p>
+            <h2>Conversation privée entre {{mp.author}} et {{mp.dest}}</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 article">
+            <h2>{{mp.title}}</h2>
+            {{{mp.content}}}
+            <p class="artFoot">publié par <a href="/users/profile/{{mp.authorId}}">{{mp.author}}</a> pour <a href="/users/profile/{{mp.destId}}">{{mp.dest}}</a>, le {{mp.formatDate}}</p>
+            {{#if isOwner}}
+            <p>
+                <a class="btn btn-secondary" href="/mp/edit/{{mp._id}}" role="button">Modifier &raquo;</a>
+                <a class="btn btn-secondary" href="/mp/delete/{{mp._id}}" role="button">Supprimer &raquo;</a>
+            </p>
+            {{/if}}
+            </div>
+        </div>
+        <section>
+            <div class="row">
+                <div class="col-md-12">
+                    {{#if mpResp}}
+                    {{#each mpResp}}
+                    <article class="comment" id="{{_id}}">
+                        <p class="comHead">Publié par <a href="/users/profile/{{senderId}}">{{senderName}}</a>, le {{formatDate}}</p>
+                        {{{content}}}
+                        {{#if isCommentOwner}}
+                        <div class="adminButtonsCont">
+                            <a class="btn btn-secondary" href="/mp/response/edit/{{_id}}">Modifier &raquo;</a>
+                            <a class="btn btn-secondary" href="/mp/response/delete/{{_id}}/{{../mp._id}}">Supprimer &raquo;</a>
+                        </div>
+                        {{/if}}
+                    </article>
+                    {{/each}}
+                    {{else}}
+                    <p class="comment">Vous n'avez pas encore répondu !</p>
+                    {{/if}}
+                    {{#if user}}
+                    <form method="POST" action="/mp/response/create/{{mp._id}}">
+                        <div class="form-group">
+                            <label for="content">Votre réponse :</label>
+                            <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+                            <script>
+                                CKEDITOR.replace(
+                                    ('content'));
+                                CKEDITOR.config.entities = false;
+                                CKEDITOR.config.entities_latin = false;
+                            </script>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Répondre</button>
+                    </form>
+                    {{else}}
+                    <p><strong>Connectez vous pour écrire une réponse !</strong></p>
+                    {{/if}}
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+    </div> <!-- /container -->
+</main>
