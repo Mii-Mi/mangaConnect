@@ -16,7 +16,7 @@
                 {{#each mp}}
                 <article class="mpListItem">
                     <h2><a href="/mp/display/{{_id}}" {{#if read}}class="text-secondary"{{else}}class="text-primary"{{/if}}>{{title}}</a></h2>
-                    <p class="artFoot">publié par <a href="/users/profile/{{authorId}}">{{author}}</a> pour <a href="/users/profile/{{destId}}">{{dest}}</a> , le {{formatDate}}</p>
+                    <p class="artFoot">Message de <a href="/users/profile/{{authorId}}">{{author}}</a> pour <a href="/users/profile/{{destId}}">{{dest}}</a> , le {{formatDate}}</p>
                 </article>
                 {{/each}}
             {{else}}
