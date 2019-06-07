@@ -33,7 +33,7 @@
                 {{#if userIsBanned}}
                 <p><a class="btn btn-secondary adminDelBtn" href="/members/unban/{{usr._id}}">Amnistier &raquo;</a></p>
                 {{else}}
-                <p><a class="btn btn-secondary adminDelBtn" href="/members/ban/{{usr._id}}">Bannir &raquo;</a></p>
+                <p><a class="btn btn-secondary adminDelBtn" href="/ban/form/{{usr._id}}">Bannir &raquo;</a></p>
                   {{#if userIsAdmin}}
                   <p><a class="btn btn-secondary adminDelBtn" href="/admins/delete/{{usr._id}}">Révoquer des admins &raquo;</a></p>
                   {{else}}

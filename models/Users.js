@@ -33,7 +33,8 @@ const UserSchema = new mongoose.Schema({
     lastVisit: {
         type: Number,
         default:0
-    }
+    },
+    banCause: String,
 })
 
 UserSchema.pre('save', function (next) {

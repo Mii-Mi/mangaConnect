@@ -1,0 +1,40 @@
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Manga Connect</h1>
+            <p>Vendez ou échangez vos mangas à travers toute la France d'un simple clic.</p>
+            <h2>Liste des admins</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 article">
+                {{#if adm}}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID membre</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Date d'inscription</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each adm}}
+                        <tr>
+                            <th scope="row">{{_id}}</th>
+                            <td><a href="/users/profile/{{_id}}">{{userName}}</a></td>
+                            <td>{{mail}}</td>
+                            <td>{{registerDate}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</main>

@@ -49,8 +49,12 @@ const welcome = require('../controllers/frontend/welcome'),
     // Admins modules
       adminAdd = require('../controllers/backend/adminAdd'),
       adminDelete = require('../controllers/backend/adminDelete'),
+      banForm = require('../controllers/backend/banForm'),
       memberBan = require('../controllers/backend/memberBan'),
       memberUnban = require('../controllers/backend/memberUnban'),
+      memberListDisplay = require('../controllers/backend/memberListDisplay'),
+      banListDisplay = require('../controllers/backend/banListDisplay'),
+      adminListDisplay = require('../controllers/backend/adminListDisplay'),
 
     // MP
       mpAdd = require('../controllers/frontend/mpAdd'),
@@ -97,8 +101,12 @@ router.get('/comments/delete/:commentId/:articleId', auth, commentDelete)
     // Admins modules
 router.get('/admins/add/:userId',adminAuth, adminAdd)
 router.get('/admins/delete/:userId', adminAuth, adminDelete)
-router.get('/members/ban/:userId', adminAuth, memberBan)
+router.post('/members/ban/:userId', adminAuth, memberBan)
 router.get('/members/unban/:userId', adminAuth, memberUnban)
+router.get('/members/list/display', adminAuth, memberListDisplay)
+router.get('/ban/form/:userId', adminAuth, banForm)
+router.get('/ban/list/display', adminAuth, banListDisplay)
+router.get('/admins/list/display', adminAuth, adminListDisplay)
 
     // MP
 router.get('/mp/add/:destId', mpAdd)

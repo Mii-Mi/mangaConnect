@@ -39,7 +39,17 @@ module.exports = (req, res) => {
                 req.session[`read`+ req.params.id] = Date.now()
 
                 if (isOwner || mp.destId === req.session.userId) {
-                    res.render('frontendView/mp/displaySingle', {mp, isOwner, mpResp})
+
+                    if (req.flash('data')[0] == 'admin') {
+                        const admin = true
+                        res.render('frontendView/mp/displaySingle', { mp, isOwner, mpResp, admin })
+                    } else if (req.flash('data')[0] == 'member') {
+                        const member = true
+                        res.render('frontendView/mp/displaySingle', { mp, isOwner, mpResp, member })
+                    } else {
+                        res.render('frontendView/mp/displaySingle', { mp, isOwner, mpResp })
+                    }
+
                 }else{
                     req.flash('error', 'Vous n\'êtes pas autorisé à voir cette conversation !')
                     res.redirect('/')

@@ -1,0 +1,36 @@
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Manga Connect</h1>
+            <h2>Note interne de ban</h2>
+            <p>Veuillez indiquer le motif du ban de {{banned.userName}}</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-12 ">
+                <form method="POST" action="/members/ban/{{banned._id}}">
+                    <div class="form-group">
+                        <label for="content">Motif :</label>
+                        <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+                        <script>
+                            CKEDITOR.replace(
+                                ('content'));
+                            CKEDITOR.config.entities = false;
+                            CKEDITOR.config.entities_latin = false;
+                        </script>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Bannir</button>
+                </form>
+            </div>
+        </div>
+
+        <hr>
+
+    </div> <!-- /container -->
+
+</main>

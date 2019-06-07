@@ -59,6 +59,14 @@ module.exports = async (req, res) => {
             }
         }
 
-        res.render('frontendView/mp/list', {mp})
+        if (req.flash('data')[0] == 'admin') {
+            const admin = true
+            res.render('frontendView/mp/list', { mp, admin })
+        } else if (req.flash('data')[0] == 'member') {
+            const member = true
+            res.render('frontendView/mp/list', { mp, member })
+        } else {
+            res.render('frontendView/mp/list', { mp })
+        }
     })
 }
