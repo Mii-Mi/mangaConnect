@@ -18,11 +18,10 @@ const UserSchema = new mongoose.Schema({
     },
     age: {
         type: Number,
-        required: [true, 'Le champ "age" est requis. ']
     },
     locate: {
         type: String,
-        required: [true, 'Le champ "nationalité" est requis.']
+        default: 'non renseigné'
     },
     registerDate: {
         type: String,

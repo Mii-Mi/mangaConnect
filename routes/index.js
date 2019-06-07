@@ -29,6 +29,8 @@ const welcome = require('../controllers/frontend/welcome'),
       userLogin = require('../controllers/frontend/userLogin'),
       userLogout = require('../controllers/frontend/userLogout'),
       userProfileDisplay = require('../controllers/frontend/userProfileDisplay'),
+      userProfileEdit = require('../controllers/frontend/userProfileEdit'),
+      userProfileUpdate = require('../controllers/frontend/userProfileUpdate'),
 
     // Articles
       articleAdd = require('../controllers/frontend/articleAdd'),
@@ -75,6 +77,8 @@ router.post('/users/add', userCreate)
 router.post('/users/login', userLogin)
 router.get('/users/logout', auth, userLogout)
 router.get('/users/profile/:authorId', userProfileDisplay)
+router.get('/users/profile/edit/:userId', auth, userProfileEdit)
+router.post('/users/profile/update/:userId', auth, userProfileUpdate)
 
     // Articles
 router.get('/articles/add', auth, articleAdd)

@@ -1,0 +1,34 @@
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Manga Connect</h1>
+            <h2>Modifiez votre message pour {{mp.dest}}</h2>
+            <p>Vendez ou échangez vos mangas à travers toute la France d'un simple clic.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-12 ">
+                <form method="POST" action="/users/profile/update/{{usr._id}}">
+                    <div class="form-group">
+                        <label for="age">Votre âge :</label>
+                        <input type="number" class="form-control" id="age" name="age" value="{{usr.age}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="locate">Votre localité :</label>
+                        <input type="text" class="form-control" id="locate" name="locate" value="{{usr.locate}}">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Modifier</button>
+                </form>
+            </div>
+        </div>
+
+        <hr>
+
+    </div> <!-- /container -->
+
+</main>

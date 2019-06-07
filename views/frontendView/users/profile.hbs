@@ -18,15 +18,18 @@
           <h3>{{usr.userName}}</h3>
         </div>
         <div class="userDataBlock">
-         <p>Age : {{usr.age}} ans</p>
-         <p>Nationalité : {{usr.locate}}</p>
+         <p>Âge : {{#if usr.age}}{{usr.age}} ans{{else}}Non renseigné{{/if}}</p>
+         <p>Localité : {{#if usr.locate}}{{usr.locate}}{{else}}Non renseigné{{/if}}</p>
         </div>
-        <p class="registerDate">Date d'inscription : {{usr.registerDate}} <br />Statut : {{#if userIsAdmin}}Admin{{else}}{{#if userIsBanned}}Banni{{else}}Membre{{/if}}{{/if}}</p>
+        <p class="registerDate">Date d'inscription : {{usr.registerDate}} <br />Statut : {{#if userIsAdmin}}<span class="badge badge-danger">Admin</span>{{else}}{{#if userIsBanned}}<span class="badge badge-secondary">Banni</span>{{else}}<span class="badge badge-primary">Membre</span>{{/if}}{{/if}}</p>
 
           <div class="adminButtons">
             <a class="btn btn-secondary mpButton" href="/mp/add/{{usr._id}}" role="button">Message Privé &raquo;</a>
-            {{#if isOwner}}{{else}}
+            {{#if isOwner}}
+            <a class="btn btn-secondary mpButton" href="/users/profile/edit/{{user}}" role="button">Modifier Profil &raquo;</a>
+            {{else}}
               {{#if admin}}
+              <p><a class="btn btn-secondary adminEditBtn" href="/users/profile/edit/{{usr._id}}" role="button">Modifier Profil &raquo;</a></p>
                 {{#if userIsBanned}}
                 <p><a class="btn btn-secondary adminDelBtn" href="/members/unban/{{usr._id}}">Amnistier &raquo;</a></p>
                 {{else}}
