@@ -7,13 +7,15 @@ const exphbs = require('express-handlebars'),
       bodyParser = require('body-parser'),
       expressSession = require('express-session'),
       MongoStore = require('connect-mongo'),
-      flash = require('express-flash')
+      flash = require('express-flash'),
+      path = require('path')
 
 app.engine('.hbs', exphbs({
     extname: '.hbs',
     defaultLayout: 'main'
 }));
 app.set('view engine', '.hbs');
+app.set('views', path.join(__dirname, 'views/'));
 
 const mongoStore = MongoStore(expressSession);
 
